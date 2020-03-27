@@ -86,10 +86,14 @@
 			<h4 class="d-flex justify-content-between align-items-center mb-3">
 				<span class="text-muted">Text</span>
 			</h4>
+			<br>
 
 			<div  id = "textbody">
-
 			</div>
+			<br>
+			<br>
+
+			<textarea rows="10" class="form-control" aria-label="Custom Message" disabled id="textbody2">Nothging here :)</textarea>
 		</div>
 	</div>
 </div>
@@ -144,6 +148,7 @@ $("#generate").click(function(){
 				result = $("#result").val()
 
 				coccode = $("#coccode").val()
+				coccode = coccode.replace(/\s+/g,"")
 
 				coccodeList = coccode.split(",")
 				console.log(coccodeList)
@@ -158,11 +163,11 @@ $("#generate").click(function(){
 				
 				customMessage = $("#cm").val()
 
-				str = username + ",<br><br>我是VATSIM中国分部的"+ adminname + "，想向您了解一下情况。<br>"
+				str = username + "，<br><br>你好，我是VATSIM中国分部的"+ adminname + "，想向您了解一下情况。<br>"
 				if(letterReceived) {
-					str += "<br><b>VATSIM中国分部于本日接到一封对你的投诉信</b>，<br><br>"
+					str += "<br><b>VATSIM中国分部于本日接到一封对你的投诉信</b>，<br>"
 				}
-				str += "于UTC时间" + time + "，在" + loc +"，" + "您" + fact + "导致" + result
+				str += "<br>于UTC时间" + time + "，在" + loc +"，" + "您" + fact + "导致" + result
 				str += "<br><br>您是否知晓您的行为已经严重违反了VATSIM CoC (Code of Conduct)中的<b>" + coccode + "</b>守则。<br>"
 				str += "<br><i>" + cocdetail + "</i><br><br>" + "请问当时的情况是如何，" + customMessage
 				str += "<br><br>希望您能详细解释一下当时的情况，感谢您的理解和配合！"
@@ -170,6 +175,7 @@ $("#generate").click(function(){
 
 				console.log(str)
 				$("#textbody").html(str)
+				$("#textbody2").val(str)
 			})
 			</script>
 </html>
