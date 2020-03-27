@@ -1,0 +1,176 @@
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</head>
+	<body class="bg-light">
+		<div class="container">
+	<div class="py-5 text-center">
+		<h2>Generate a Warning Letter</h2>
+		<p class="lead">In one minute</p>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 order-md-2 mb-4">
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">Information</span>
+			</h4>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">From</span>
+				</div>
+				<input type="text" class="form-control" id="from" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">To</span>
+				  </div>
+				<input type="text" class="form-control" id="to" required>
+			</div>
+			<br>
+
+			<div class="form-check form-check">
+				<input class="form-check-input" type="checkbox" value="false" id="isComplained">
+				<label class="form-check-label">接到投诉？</label>
+			</div>
+			<br>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">Time</span>
+				</div>
+				<input type="text" class="form-control" id="time" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">Loc</span>
+				  </div>
+				<input type="text" class="form-control" id="loc" required>
+			</div>
+			<br>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				<span class="input-group-text">CoC Code</span>
+				</div>
+				<input type="text" class="form-control" id="coccode" required>
+			</div>
+
+			<br>
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">Fact</span>
+				</div>
+				<textarea class="form-control" aria-label="Fact" id ="fact"></textarea>
+			</div>
+			<br>
+
+			<div class="input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text">Result</span>
+				</div>
+				<textarea class="form-control" aria-label="Result" id="result"></textarea>
+			</div>
+			<br>
+
+			<div class="input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text">Custom Message</span>
+				</div>
+				<textarea class="form-control" aria-label="Custom Message" id="cm"></textarea>
+			</div>
+			<br>
+			
+
+			<button type="button" class="btn btn-primary" id="generate">Give me a letter!</button>
+
+		</div>
+		<div class="col-md-8 order-md-1">
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">Text</span>
+			</h4>
+
+			<div  id = "textbody">
+
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+			</body>
+			<script>
+
+$("#generate").click(function(){
+
+
+	cocList = {
+    "A1":" Members shall, at all times, be courteous and respectful to one another.",
+    "A2(a)":"To use VATSIM, you must first register as a member of VATSIM. Only registered members in good standing may observe, fly as a pilot, and/or provide ATC as a controller. ",
+    "A2(b)":"Only registered members in good standing may connect to VATSIM or a VATSIM service, except as a guest where applicable. ",
+    "A3":"Without exception, a member may not permit or knowingly allow their VATSIM account to be used by anyone else. ",
+    "A4(a)":"During the registration process with VATSIM, you must provide your real full name. Nicknames, callsigns or abbreviations are not permitted to be associated with a member’s registered account. VATSIM reserves the right, in its discretion, to require proof of real name and proof of age from a member. ",
+    "A4(b)":"Members shall connect to VATSIM using only one of the following name conventions:\n(1) Their real, FULL NAME (ie Joseph Smith), as registered.\n(2) An appropriate shortening of their given name, followed by their surname (ie Joe Smith).\n(3) Their real given name. (ie Joseph).\n(4) An appropriate shortening of their given name (ie Joe).\n(5) Their certificate ID number. ",
+    "A5":"During your time as a member of VATSIM, you must provide and maintain a valid e-mail address. This means that you must notify VATSIM of any changes to your e-mail address. Your e-mail address will not be shared outside the VATSIM organization without your express prior permission. Failure to maintain your e-mail address is grounds for immediate suspension of your VATSIM account, without notice. ",
+    "A6":"A member may register for and hold only one VATSIM account. ",
+    "A7":"A member shall only use software approved by VATSIM to connect to, or interface with the network. (https://www.vatsim.net/documents/approved-software) A member shall become familiar with the basic use of these programs prior to logging on to the VATSIM network. ",
+    "A8":"A member shall only make one connection to the VATSIM network during any given session, except as may be otherwise provided for in this Code of Conduct. ",
+    "A9":"Except as provided for in Section B3(b) of this Code of Conduct, members shall not leave their connections unattended. Members not actively participating in the network (ie connected as an observer) shall not log on for excessive periods of time. ",
+    "A10":"Members shall exercise patience and tolerance towards other members, especially where a member is less familiar with an area, or learning new skills. ",
+    "A11":"Members are prohibited from using any software, forums, newsgroups, social media streams, or mailing lists utilized by VATSIM and its officially recognized Regions, Divisions and their subdivisions to threaten, harass, stalk, or to otherwise violate the legal rights of others including expectations of privacy and publicity. This includes using the above resources to find, locate, or otherwise discover methods of contacting members for the purpose of threatening, harassing, stalking, or otherwise violating the legal rights of them. Further, members shall not publish, post, distribute, disseminate, or use any kind of defamatory, infringing, obscene, vulgar, profane, unlawful, or other types of communications, materials, or information. Individuals violating this rule are subject to the procedures set forth in Article I of the VATSIM.net Code of Regulations, which may result in removal from VATSIM and revocation of their membership privileges. ",
+    "A12":"Members shall not connect to VATSIM with a callsign, or other identifier, that implies or designates a status they do not hold including, but not limited to, those reserved for, or generally used by, Founders, members of the Board of Governors, members of the Executive Committee, Supervisors, and/or any staff members. Furthermore, members shall not state, imply, or otherwise communicate that they hold a status they do not. ",
+    "A13":"Members shall only connect to VATSIM as an observer, a pilot, or an air traffic controller. No other connection is permitted. Military, paramilitary or civilian government agency operations and/or activities must be authorized by an approved Special Operations Organization. Special Operations restrictions and procedures are defined in the Special Operations Policy. (https://www.vatsim.net/documents/specia ... guidelines) ",
+    "A14":"Voice is the preferred method of communication on VATSIM, though all members shall accommodate, with the same level of service, those communicating only by text. There shall be no rules preventing or discouraging the use of either voice or text. Only unaltered speech is permitted to be transmitted. ",
+    "A15":"While connected to VATSIM, and when requested to do so, members shall respond to messages from, and comply with all instructions issued by VATSIM Administrators and/or VATSIM Supervisors. ",
+    "A16":"Members shall not carry out private conversations over any communication channels, frequencies, or resources, with the exception of private messages, while connected to the VATSIM Network. The guard VHF radio frequency (121.500) shall not be used. ",
+    "A17":"The re-creation of, or organization of events recognizing real world disasters, tragedies, or other such events, particularly those which resulted in loss of life, are not permitted. In addition callsigns that VATSIM has deemed prohibited shall not be used at any time. (View Restricted Callsigns) ",
+    "A18":"VATSIM welcomes members who wish to stream, record, or otherwise distribute their session for public viewing.\n(a) The online network conduct of the member during the stream/recording remains subject to this Code of Conduct.\n(b) If the member provides a link to their stream/recording either in their flight plan, or via other VATSIM operated medium, the entire stream/recorded session including informal mediums such as a stream chat are subject to this Code of Conduct.\n(c) Members connected to the network who deliberately disrupt the stream/recording of another member are subject to immediate suspension from the network.\n(d) VATSIM does not have the ability for its members to opt-out of being part of another members stream/recording. ",
+    "B1":"A pilot shall not connect to the VATSIM Network on a runway or taxiway. If a pilot chooses to connect while airborne, a pilot shall ensure doing so does not cause disruption to other members. ",
+    "B2":"A pilot shall not pause while connected to the VATSIM Network except when operating under air traffic control, with the express permission of the controller. If the controller revokes the permission for any reason, the pilot shall unpause immediately ",
+    "B3(a)":"Pilots shall monitor their flights at all times. It is the responsibility of the pilot to check for, and make timely contact with appropriate air traffic controllers. This includes making prompt contact when requested to do so. ",
+    "B3(b)":"If it becomes necessary to leave a pilot connection unattended, the member is encouraged to disconnect from the network. Notwithstanding anything in this Code to the contrary, no pilot connection is permitted to be unattended for a period of longer than 30 minutes. ",
+    "B4":"A pilot shall not squawk standby while their aircraft is in motion except when requested by air traffic control. Simulation of aircraft without a transponder is permitted with air traffic control approval. ",
+    "B5":"Pilots flying through uncontrolled airspace shall monitor VHF radio frequency 122.800 or other designated UNICOM frequency until they come under air traffic control coverage. Where another pilot may benefit, a pilot shall transmit their intentions on the designated unicom frequency. ",
+    "B6":"No flight may declare itself to have priority over another. Pilots are permitted to declare in-flight emergencies only when under air traffic control. If, for any reason, air traffic control requests the pilot to terminate the emergency, then the pilot must do so IMMEDIATELY or disconnect from the network. Pilots are not permitted to simulate any unlawful act including, but not limited to, declaring a hijack by any method, including entering a transponder code of 7500. ",
+    "B7":"Two or more pilots are permitted to fly in formation. If, for any reason, air traffic control instructs pilots to separate, the pilots must immediately comply with the request or disconnect from the network. ",
+    "B8":"A pilot must comply with all agreed (read-back) air traffic control clearances and all issued instructions, or notify air traffic control without delay if unable to do so. Additionally, compliance with the following ATC instructions is mandatory, unless operational safety (e.g. TCAS conflict resolution) is compromised:\n- Holding position when on the ground at an airport.\n- Flying at a speed.\n- Flying a heading.\n- Flying at an altitude or flight level. ",
+    "B9":"A pilot operating their simulator using acceleration/deceleration functions must continuously monitor their connection, and ensure that they do not cause disruptions to other members. If operating in actively controlled airspace, the pilot must have the express permission of the controller to operate using time acceleration/deceleration, and if a controller requests a pilot to return to ‘normal simulation rate’, the pilot shall immediately comply.",
+    "B10":"All pilots flying IFR shall submit a flight plan before flight. The IFR flight plan must contain, at a minimum, the aircraft callsign, departure airport, arrival airport, aircraft type, and requested route. All VFR pilots are encouraged, when appropriate, to submit a flight plan.",
+    "B11":"Pilots may fly together through the use of a shared cockpit function. When pilots fly together through the use of a shared cockpit function, members are jointly liable for any infringement of VATSIM Policies."
+}
+				username = $("#to").val()
+				adminname = $("#from").val()
+				letterReceived = document.getElementById("isComplained").checked
+				time = $("#time").val()
+				loc = $("#loc").val()
+				fact = $("#fact").val()
+				result = $("#result").val()
+
+				coccode = $("#coccode").val()
+
+				coccodeList = coccode.split(",")
+				console.log(coccodeList)
+				cocdetail = ""
+
+				for (code in coccodeList) {
+					cocdetail += coccodeList[code] + " - " + cocList[coccodeList[code]] + "<br>"
+				}
+
+				
+				customMessage = $("#cm").val()
+
+				str = username + ",<br><br>我是VATSIM中国分部的"+ adminname + "，想向您了解一下情况。<br>"
+				if(letterReceived) {
+					str += "<br><b>VATSIM中国分部于本日接到一封对你的投诉信</b>，<br><br>"
+				}
+				str += "于UTC时间" + time + "，在" + loc +"，" + "您" + fact + "导致" + result
+				str += "<br><br>您是否知晓您的行为已经严重违反了VATSIM CoC (Code of Conduct)中，" + coccode + "守则。<br>"
+				str += "<br><i>" + cocdetail + "</i><br><br>" + "请问当时的情况是如何，" + customMessage
+				str += "<br><br>希望您能详细解释一下当时的情况,感谢您的理解和配合！"
+				str += "<br>请您在收到本邮件后，尽快做出回复，多谢！"
+
+				console.log(str)
+				$("#textbody").html(str)
+			})
+			</script>
+</html>
+
+
+
