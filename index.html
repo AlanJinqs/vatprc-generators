@@ -47,6 +47,14 @@
 			<br>
 			<div class="input-group">
 				<div class="input-group-prepend">
+				<span class="input-group-text">Callsign</span>
+				</div>
+				<input type="text" class="form-control" id="callsign" required>
+			</div>
+			<br>
+
+			<div class="input-group">
+				<div class="input-group-prepend">
 				<span class="input-group-text">CoC Code</span>
 				</div>
 				<input type="text" class="form-control" id="coccode" required>
@@ -141,9 +149,12 @@ $("#generate").click(function(){
 }
 				username = $("#to").val()
 				adminname = $("#from").val()
+
 				letterReceived = document.getElementById("isComplained").checked
 				time = $("#time").val()
 				loc = $("#loc").val()
+				callsign = $("#callsign").val()
+
 				fact = $("#fact").val()
 				result = $("#result").val()
 
@@ -163,11 +174,11 @@ $("#generate").click(function(){
 				
 				customMessage = $("#cm").val()
 
-				str = username + "，<br><br>你好，我是VATSIM中国分部的"+ adminname + "，想向您了解一下情况。<br>"
+				str = username + "，<br><br>您好，我是VATSIM中国分部的"+ adminname + "，想向您了解一下情况。<br>"
 				if(letterReceived) {
 					str += "<br><b>VATSIM中国分部于本日接到一封对你的投诉信</b>，<br>"
 				}
-				str += "<br>于UTC时间" + time + "，在" + loc +"，" + "您" + fact + "导致" + result
+				str += "<br>于UTC时间" + time + "，在" + loc +"，" + "您使用呼号" + callsign + "，"+ fact + "导致" + result
 				str += "。<br><br>您是否知晓您的行为已经严重违反了<a href='https://vats.im/coc'>VATSIM CoC (Code of Conduct)</a>中的<b>" + coccode + "</b>守则。<br>"
 				str += "<br><i>" + cocdetail + "</i><br>" + "请问当时的情况是如何？" + customMessage
 				str += "<br><br>希望您能详细解释一下当时的情况，感谢您的理解和配合！"
