@@ -1,0 +1,193 @@
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<link href="https://cdn.bootcss.com/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
+				<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
+
+	</head>
+	<body class="bg-light">
+		<div class="container">
+	<div class="py-5 text-center">
+		<h2>Generate a event page</h2>
+		<p class="lead">In one minute</p>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 order-md-2 mb-4">
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">Information</span>
+			</h4>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">From</span>
+				</div>
+				<input type="text" class="form-control" id="fromIcao" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">To</span>
+				  </div>
+				<input type="text" class="form-control" id="toIcao" required>
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				<input type="text" id="datepicker"  placeholder="Date" readonly class="form-control picker">
+			</div>
+			<br>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">DateCN</span>
+				</div>
+				<input type="text" class="form-control" id="dateCN" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">DateEN</span>
+				  </div>
+				<input type="text" class="form-control" id="dateEN" required>
+			</div>
+			<br>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">AptFromCN</span>
+				</div>
+				<input type="text" class="form-control" id="cnAptFrom" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">AptToCN</span>
+				  </div>
+				<input type="text" class="form-control" id="cnAptTo" required>
+			</div>
+			<br>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">AptFromEN</span>
+				</div>
+				<input type="text" class="form-control" id="enAptFrom" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">AptToEN</span>
+				  </div>
+				<input type="text" class="form-control" id="enAptTo" required>
+			</div>
+			<br>
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <span class="input-group-text">RouteA</span>
+				</div>
+				<textarea class="form-control" aria-label="Fact" id ="routeA"></textarea>
+			</div>
+			<br>
+
+			<div class="input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text">RouteB</span>
+				</div>
+				<textarea class="form-control" aria-label="Result" id="routeB"></textarea>
+			</div>
+			<br>
+
+			<button type="button" class="btn btn-primary" id="generate">Give me a Post!</button>
+
+		</div>
+		<div class="col-md-8 order-md-1">
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">CN</span>
+			</h4>
+			<br>
+
+			<div  id = "cnTextBody">
+			</div>
+			<br>
+			<br>
+
+			<textarea rows="10" class="form-control" aria-label="Custom Message" disabled id="cnTextBody2">Nothging here :)</textarea>
+			<br>
+			<br>
+			<br>
+			
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">EN</span>
+			</h4>
+			<br>
+			<div  id = "enTextBody">
+			</div>
+			<br>
+			<br>
+			<textarea rows="10" class="form-control" aria-label="Custom Message" disabled id="enTextBody2">Nothging here :)</textarea>
+
+		</div>
+	</div>
+</div>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+			</body>
+			<script src="https://cdn.bootcss.com/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+			<script>
+$("#datepicker").datepicker({
+					format: "yyyy-mm-dd", 
+					todayBtn: "linked",
+					language: "zh-CN",
+					orientation: "auto",//日期控件显示位置
+					startView:"days",//默认显示视图：months、years、centuries，可选
+					minViewMode:"days",//最小显示视图
+					keyboardNavigation: false,
+					autoclose: true,
+					todayHighlight: true
+				});	
+				function formatDate(date) {
+  var date = new Date(date);
+  var YY = date.getFullYear() + '/';
+  var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+  var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+  return YY + MM + DD
+}
+$("#datepicker").datepicker().on("changeDate", function (e) {
+     if(e.date){
+        $("#dateCN").val(formatDate(e.date.valueOf()))
+		$("#dateEN").val(formatDate(e.date.valueOf()))
+
+    }
+});
+$("#generate").click(function(){
+						
+				dateCN = $("#dateCN").val()
+				dateEN = $("#dateEN").val()
+
+				cnAptFrom = $("#cnAptFrom").val()
+				cnAptTo = $("#cnAptTo").val()
+				enAptFrom = $("#enAptFrom").val()
+				enAptTo = $("#enAptTo").val()
+				fromIcao = $("#fromIcao").val()
+				toIcao = $("#toIcao").val()
+
+				routeA = $("#routeA").val()
+				routeB = $("#routeB").val()
+
+				cnStr = '<!-- wp:heading {"level":3} --><h3>活动时间</h3><!-- /wp:heading --><!-- wp:paragraph --><p>'
+				cnStr = cnStr + dateCN + '<strong></strong>晚8点至12点 1200z-1600z</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} -->'
+				cnStr = cnStr + "<h3>活动机场</h3><!-- /wp:heading --><!-- wp:list --><ul><li>"+cnAptFrom+"（"+fromIcao+"）</li>"
+				cnStr = cnStr + "<li>"+cnAptTo+"（"+toIcao+'）</li></ul><!-- /wp:list --><!-- wp:heading {"level":3} --><h3>航路</h3>'
+				cnStr = cnStr + "<!-- /wp:heading --><!-- wp:list --><ul><li><strong>"+fromIcao+" - "+toIcao+"</strong><em><strong>（请务必使用AIRAC2001及以上版本导航数据）</strong></em><ul><li>"+routeA+"</li></ul></li><li>"
+				cnStr = cnStr + "<strong>"+toIcao+" - "+fromIcao+"</strong><em><strong>（请务必使用AIRAC2001及以上版本导航数据）</strong></em><ul><li>"+routeB+"</li></ul></li></ul>"
+				cnStr = cnStr + '<!-- /wp:list --><!-- wp:heading {"level":3} --><h3><strong>航图</strong></h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">【VATPRC 飞行员中心（请用VATSIM账号登录后查看）】</a></p>'
+				cnStr = cnStr + '<!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>推荐地景</h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心]</a></p>'
+				cnStr = cnStr + '<!-- /wp:paragraph --><!-- wp:paragraph --><p>VATPRC&nbsp;有你更精彩<br>You make the difference!</p><!-- /wp:paragraph -->'
+				$("#cnTextBody").html(cnStr)
+				$("#cnTextBody2").val(cnStr)
+
+
+				enStr = '<!-- wp:heading {"level":3} --> <h3>Event Date and time</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>Saturday, '
+				enStr = enStr + dateEN +', 1200z - 1600z, 2000CST - 2400CST</p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>Featuring Airports</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
+				enStr = enStr + enAptFrom+'('+fromIcao+')</li><li>'+enAptTo+'('+toIcao+')</li></ul> <!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Route</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
+				enStr = enStr + fromIcao+" - "+toIcao+'<strong>(AIRAC2001 or above)</strong><ul><li>'+routeA+'</li></ul></li><li>'+toIcao+" - "+fromIcao+'<strong>(AIRAC2001 or above)</strong><ul><li>'+routeB+'</li></ul></li></ul>'
+				enStr = enStr + '<!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Charts</h3> <!-- /wp:heading --><!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph -->'
+				enStr = enStr + '<!-- wp:heading {"level":3} --> <h3>Scenery</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>RVSM Rules</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>China implements RVSM in Metric level system. For details, Please visit&nbsp;<a href="https://www.vatprc.net/en/rvsm-en">Chinese RVSM</a></p> <!-- /wp:paragraph --> <!-- wp:paragraph --> <p>VATPRC有你，更精彩<br>You Make the Difference</p> <!-- /wp:paragraph -->'
+				$("#enTextBody").html(enStr)
+				$("#enTextBody2").val(enStr)
+			})
+			</script>
+</html>
+
+
+
