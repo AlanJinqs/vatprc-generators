@@ -99,14 +99,6 @@ $("#datepicker").datepicker({
   return YY + MM + DD
 }
 
-var img = document.getElementById("onlineday");
-
-const buttona = document.getElementById('generate')
-buttona.disabled = true
-
-img.onload = function(){
-	buttona.disabled = false
-}
 
 $("#generate").click(function(){	
 	var img = document.getElementById("onlineday");
