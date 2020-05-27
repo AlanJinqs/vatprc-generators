@@ -1,12 +1,12 @@
 <html>
-	<head>
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-		<link href="https://cdn.bootcss.com/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
-				<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
-				<style>
+ <head> 
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" /> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
+  <link href="https://cdn.bootcss.com/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" /> 
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script> 
+  <style>
 					@font-face{
 						font-family: 'Library3am';
 						src : url('Library-3-am-3.otf');
@@ -16,77 +16,87 @@
 						margin: 0;
 						font-family:"Library3am";
 					}
-					</style>
-	</head>
-	<body class="bg-light">
-		<div class="container">
-	<div class="py-5 text-center">
-		<h2>Generate an Online Day Banner</h2>
-		<p class="lead">In 10 seconds</p>
-	</div>
+					</style> 
+ </head> 
+ <body class="bg-light"> 
+  <div class="container"> 
+   <div class="py-5 text-center"> 
+    <h2>Generate an Online Day Banner</h2> 
+    <p class="lead">In 10 seconds</p> 
+   </div> 
+   <h4 class="d-flex justify-content-between align-items-center"> <span class="text-muted">Information</span> </h4> 
+   <div class="input-group"> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">Airport ICAO</span> 
+    </div> 
+    <input type="text" class="form-control" id="aptIcao" required="" /> 
+   </div> 
+   <br /> 
+   <div class="input-group"> 
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+    <input type="text" id="datepicker" placeholder="Date" readonly="" class="form-control picker" /> 
+   </div> 
+   <br /> 
+   <div class="input-group"> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">Day Of Week</span> 
+    </div> 
+    <input type="text" class="form-control" id="dow" value="Wed." required="" /> 
+   </div> 
+   <br /> 
+   <div class="input-group"> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">Time(UTC)</span> 
+    </div> 
+    <input type="text" class="form-control" id="timeUTC" value="1200z-1430z" required="" /> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">Time(CST)</span> 
+    </div> 
+    <input type="text" class="form-control" id="timeCST" value="晚20:00至22:30" required="" /> 
+   </div> 
+   <br /> 
+   <div class="input-group"> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">City Name</span> 
+    </div> 
+    <input type="text" class="form-control" id="aptName" required="" /> 
+   </div> 
+   <br /> 
+   <div class="input-group"> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">AptCN</span> 
+    </div> 
+    <input type="text" class="form-control" id="cnAptName" required="" /> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">AptEn</span> 
+    </div> 
+    <input type="text" class="form-control" id="enAptName" required="" /> 
+   </div> 
+   <br /> 
+   <div class="input-group"> 
+    <div class="input-group-prepend"> 
+     <span class="input-group-text">Font Size For Title</span> 
+    </div> 
+    <input type="text" class="form-control" id="fts" value="100" required="" /> 
+   </div> 
+   <br /> 
+   <button type="button" class="btn btn-primary" id="generate">Give me a Banner!</button> 
+  </div> 
+  <h></h> 
 
-		<h4 class="d-flex justify-content-between align-items-center">
-			<span class="text-muted">Information</span>
-		</h4>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Airport ICAO</span>
-			</div>
-			<input type="text" class="form-control" id="aptIcao" required>
-		</div>
-		<br>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			<input type="text" id="datepicker"  placeholder="Date" readonly class="form-control picker">
-		</div>
-		<br>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Day Of Week</span>
-			</div>
-			<input type="text" class="form-control" id="dow" value="Wed." required>
-		</div>
-		<br>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Time</span>
-			</div>
-			<input type="text" class="form-control" id="time" value="1200z-1600z" required>
-		</div>
-		<br>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">City Name</span>
-			</div>
-			<input type="text" class="form-control" id="aptName" required>
-		</div>
-		<br>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Font Size For Title</span>
-			</div>
-			<input type="text" class="form-control" id="fts" value = "100" required>
-		</div>
-		<br>
-		<button type="button" class="btn btn-primary" id="generate">Give me a Banner!</button>
+  <img id="onlineday" src="Onlineday.jpg" width="1500" height="750" alt="img" style="display:none" /> 
+  <div class="text-center"> 
+   <canvas id="myCanvas" width="1500" height="750">
+     Your browser does not support the HTML5 canvas tag. 
+   </canvas> 
+  </div> 
 
-	</div>
-		<h></h>
-		<img id="onlineday" src="Onlineday.jpg" width="1500" height="750" alt="img"/ style="display:none">
+  <textarea rows="10" style="margin: 50px 40px" class="form-control" aria-label="Custom Message" disabled="" id="cnTextBody2">Nothging here :)</textarea> 
+  <textarea rows="10" style="margin: 50px 40px" class="form-control" aria-label="Custom Message" disabled="" id="enTextBody2">Nothging here :)</textarea> 
 
-		<div class="text-center">
-			<canvas id="myCanvas" width="1500" height="750">
-				Your browser does not support the HTML5 canvas tag.
-			</canvas>
-		</div>
-
-
-</body>
-
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-</body>
-<script src="https://cdn.bootcss.com/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-<script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>  
+  <script src="https://cdn.bootcss.com/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script> 
+  <script>
 $("#datepicker").datepicker({
 					format: "yyyy-mm-dd", 
 					todayBtn: "linked",
@@ -112,11 +122,16 @@ $("#generate").click(function(){
 	var c = document.getElementById("myCanvas");
 	var ctx=c.getContext("2d");
 	date = $("#datepicker").val()
+	timeCST = $("#timeCST").val()
+	timeUTC = $("#timeUTC").val()
+
 	fts = $("#fts").val()
 	icao = $("#aptIcao").val()
 	name = $("#aptName").val()
 	dow = $("#dow").val()
-	time = $("#time").val()
+	time = $("#timeUTC").val()
+	cnAptName = $("#cnAptName").val()
+	enAptName = $("#enAptName").val()
 
 	ctx.drawImage(img, 0, 0);
 	ctx.font="200px Library3am";
@@ -128,9 +143,17 @@ $("#generate").click(function(){
 
 	ctx.font="50px Library3am";
 	ctx.fillText(date + " "+ dow +" " + time,100,670);
+
+
+	var cnTextBody = '<!-- wp:heading {"level":3} --> <h3>活动时间</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>' +
+	date + '北京时间'+ timeCST +' '+timeUTC+'</p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>活动机场</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>' +
+	cnAptName +'（' + icao + '）</li></ul> <!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3><strong>航图</strong></h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心（请用VATSIM账号登录后查看）]</a></p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>推荐地景</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心]</a></p> <!-- /wp:paragraph --> <!-- wp:paragraph --> <p>VATPRC&nbsp;有你更精彩<br>You make the difference!</p> <!-- /wp:paragraph -->'
+	$("#cnTextBody2").val(cnTextBody)
+	var enTextBody = '<!-- wp:heading {"level":3} --> <h3>Event Date and time</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>' +
+	'dow, ' + date + ', '+timeUTC+'</p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>Featuring Airports</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'+
+	enAptName + '('+icao+')</li></ul> <!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Charts</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>Scenery</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>RVSM Rules</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>China implements RVSM in Metric level system. For details, Please visit&nbsp;<a href="https://www.vatprc.net/en/rvsm-en">Chinese RVSM</a></p> <!-- /wp:paragraph --> <!-- wp:paragraph --> <p>VATPRC有你，更精彩<br>You Make the Difference</p> <!-- /wp:paragraph -->'
+	$("#enTextBody2").val(enTextBody)
 })
-</script>
+</script>  
+</body>
 </html>
-
-
-

@@ -49,6 +49,17 @@
 			<br>
 			<div class="input-group">
 				<div class="input-group-prepend">
+				  <span class="input-group-text">Time(UTC)</span>
+				</div>
+				<input type="text" class="form-control" id="timeUTC" value="1200z-1600z" required>
+				<div class="input-group-prepend">
+					<span class="input-group-text">Time(CST)</span>
+				  </div>
+				<input type="text" class="form-control" id="timeCST" value="晚8点至24点" required>
+			</div>
+			<br>
+			<div class="input-group">
+				<div class="input-group-prepend">
 				  <span class="input-group-text">AptFromCN</span>
 				</div>
 				<input type="text" class="form-control" id="cnAptFrom" required>
@@ -160,17 +171,19 @@ $("#generate").click(function(){
 				enAptTo = $("#enAptTo").val()
 				fromIcao = $("#fromIcao").val()
 				toIcao = $("#toIcao").val()
+				timeCST = $("#timeCST").val()
+				timeUTC = $("#timeUTC").val()
 
 				routeA = $("#routeA").val()
 				routeB = $("#routeB").val()
 
 				cnStr = '<!-- wp:heading {"level":3} --><h3>活动时间</h3><!-- /wp:heading --><!-- wp:paragraph --><p>'
-				cnStr = cnStr + dateCN + '<strong></strong>晚8点至12点 1200z-1600z</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} -->'
+				cnStr = cnStr + dateCN + '<strong></strong>'+ timeCST +' '+ timeUTC +'</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} -->'
 				cnStr = cnStr + "<h3>活动机场</h3><!-- /wp:heading --><!-- wp:list --><ul><li>"+cnAptFrom+"（"+fromIcao+"）</li>"
 				cnStr = cnStr + "<li>"+cnAptTo+"（"+toIcao+'）</li></ul><!-- /wp:list --><!-- wp:heading {"level":3} --><h3>航路</h3>'
 				cnStr = cnStr + "<!-- /wp:heading --><!-- wp:list --><ul><li><strong>"+fromIcao+" - "+toIcao+"</strong><em><strong>（请务必使用AIRAC2001及以上版本导航数据）</strong></em><ul><li>"+routeA+"</li></ul></li><li>"
 				cnStr = cnStr + "<strong>"+toIcao+" - "+fromIcao+"</strong><em><strong>（请务必使用AIRAC2001及以上版本导航数据）</strong></em><ul><li>"+routeB+"</li></ul></li></ul>"
-				cnStr = cnStr + '<!-- /wp:list --><!-- wp:heading {"level":3} --><h3><strong>航图</strong></h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">【VATPRC 飞行员中心（请用VATSIM账号登录后查看）】</a></p>'
+				cnStr = cnStr + '<!-- /wp:list --><!-- wp:heading {"level":3} --><h3><strong>航图</strong></h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心（请用VATSIM账号登录后查看）]</a></p>'
 				cnStr = cnStr + '<!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>推荐地景</h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心]</a></p>'
 				cnStr = cnStr + '<!-- /wp:paragraph --><!-- wp:paragraph --><p>VATPRC&nbsp;有你更精彩<br>You make the difference!</p><!-- /wp:paragraph -->'
 				$("#cnTextBody").html(cnStr)
@@ -178,7 +191,7 @@ $("#generate").click(function(){
 
 
 				enStr = '<!-- wp:heading {"level":3} --> <h3>Event Date and time</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>Saturday, '
-				enStr = enStr + dateEN +', 1200z - 1600z, 2000CST - 2400CST</p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>Featuring Airports</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
+				enStr = enStr + dateEN +', ' + timeUTC+ '</p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>Featuring Airports</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
 				enStr = enStr + enAptFrom+'('+fromIcao+')</li><li>'+enAptTo+'('+toIcao+')</li></ul> <!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Route</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
 				enStr = enStr + fromIcao+" - "+toIcao+'<strong>(AIRAC2001 or above)</strong><ul><li>'+routeA+'</li></ul></li><li>'+toIcao+" - "+fromIcao+'<strong>(AIRAC2001 or above)</strong><ul><li>'+routeB+'</li></ul></li></ul>'
 				enStr = enStr + '<!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Charts</h3> <!-- /wp:heading --><!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph -->'
