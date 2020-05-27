@@ -80,7 +80,13 @@
 				<input type="text" class="form-control" id="enAptTo" required>
 			</div>
 			<br>
-
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Nav Data</span>
+				  </div>
+				<input type="text" class="form-control" id="navData" value="AIRAC2004" required>
+			</div>
+			<br>
 			<div class="input-group">
 				<div class="input-group-prepend">
 				  <span class="input-group-text">RouteA</span>
@@ -173,6 +179,7 @@ $("#generate").click(function(){
 				toIcao = $("#toIcao").val()
 				timeCST = $("#timeCST").val()
 				timeUTC = $("#timeUTC").val()
+				navData = $("#navData").val()
 
 				routeA = $("#routeA").val()
 				routeB = $("#routeB").val()
@@ -181,8 +188,8 @@ $("#generate").click(function(){
 				cnStr = cnStr + dateCN + '<strong></strong>'+ timeCST +' '+ timeUTC +'</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} -->'
 				cnStr = cnStr + "<h3>活动机场</h3><!-- /wp:heading --><!-- wp:list --><ul><li>"+cnAptFrom+"（"+fromIcao+"）</li>"
 				cnStr = cnStr + "<li>"+cnAptTo+"（"+toIcao+'）</li></ul><!-- /wp:list --><!-- wp:heading {"level":3} --><h3>航路</h3>'
-				cnStr = cnStr + "<!-- /wp:heading --><!-- wp:list --><ul><li><strong>"+fromIcao+" - "+toIcao+"</strong><em><strong>（请务必使用AIRAC2001及以上版本导航数据）</strong></em><ul><li>"+routeA+"</li></ul></li><li>"
-				cnStr = cnStr + "<strong>"+toIcao+" - "+fromIcao+"</strong><em><strong>（请务必使用AIRAC2001及以上版本导航数据）</strong></em><ul><li>"+routeB+"</li></ul></li></ul>"
+				cnStr = cnStr + "<!-- /wp:heading --><!-- wp:list --><ul><li><strong>"+fromIcao+" - "+toIcao+"</strong><em><strong>（请务必使用"+navData+"及以上版本导航数据）</strong></em><ul><li>"+routeA+"</li></ul></li><li>"
+				cnStr = cnStr + "<strong>"+toIcao+" - "+fromIcao+"</strong><em><strong>（请务必使用"+navData+"及以上版本导航数据）</strong></em><ul><li>"+routeB+"</li></ul></li></ul>"
 				cnStr = cnStr + '<!-- /wp:list --><!-- wp:heading {"level":3} --><h3><strong>航图</strong></h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心（请用VATSIM账号登录后查看）]</a></p>'
 				cnStr = cnStr + '<!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>推荐地景</h3><!-- /wp:heading --><!-- wp:paragraph --><p><a href="https://pilot.vatprc.net/" target="_blank" rel="noreferrer noopener" aria-label="（在新窗口打开）">[VATPRC 飞行员中心]</a></p>'
 				cnStr = cnStr + '<!-- /wp:paragraph --><!-- wp:paragraph --><p>VATPRC&nbsp;有你更精彩<br>You make the difference!</p><!-- /wp:paragraph -->'
@@ -193,7 +200,7 @@ $("#generate").click(function(){
 				enStr = '<!-- wp:heading {"level":3} --> <h3>Event Date and time</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>Saturday, '
 				enStr = enStr + dateEN +', ' + timeUTC+ '</p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>Featuring Airports</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
 				enStr = enStr + enAptFrom+'('+fromIcao+')</li><li>'+enAptTo+'('+toIcao+')</li></ul> <!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Route</h3> <!-- /wp:heading --> <!-- wp:list --> <ul><li>'
-				enStr = enStr + fromIcao+" - "+toIcao+'<strong>(AIRAC2001 or above)</strong><ul><li>'+routeA+'</li></ul></li><li>'+toIcao+" - "+fromIcao+'<strong>(AIRAC2001 or above)</strong><ul><li>'+routeB+'</li></ul></li></ul>'
+				enStr = enStr + fromIcao+" - "+toIcao+'<strong>('+navData+' or above)</strong><ul><li>'+routeA+'</li></ul></li><li>'+toIcao+" - "+fromIcao+'<strong>('+navData+' or above)</strong><ul><li>'+routeB+'</li></ul></li></ul>'
 				enStr = enStr + '<!-- /wp:list --> <!-- wp:heading {"level":3} --> <h3>Charts</h3> <!-- /wp:heading --><!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph -->'
 				enStr = enStr + '<!-- wp:heading {"level":3} --> <h3>Scenery</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p><a href="https://pilot.vatprc.net">[VATPRC-Pilot Center]</a></p> <!-- /wp:paragraph --> <!-- wp:heading {"level":3} --> <h3>RVSM Rules</h3> <!-- /wp:heading --> <!-- wp:paragraph --> <p>China implements RVSM in Metric level system. For details, Please visit&nbsp;<a href="https://www.vatprc.net/en/rvsm-en">Chinese RVSM</a></p> <!-- /wp:paragraph --> <!-- wp:paragraph --> <p>VATPRC有你，更精彩<br>You Make the Difference</p> <!-- /wp:paragraph -->'
 				$("#enTextBody").html(enStr)
